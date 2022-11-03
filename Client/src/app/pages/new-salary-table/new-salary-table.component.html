@@ -1,0 +1,47 @@
+<p-table [value]="salaryResult" responsiveLayout="scroll" class="text-center">
+    <ng-template pTemplate="header">
+        <tr >
+            <th rowspan="3" class="text-center">שכר בסיס חדש</th>
+            <th colspan="14" class="text-center">חישוב רכיבי שכר בסיס</th>
+        </tr>
+        <tr>
+            <th colspan="1" rowspan="2">שיעור העלאת שכר</th>
+            <th colspan="1" rowspan="2">תוספת העלאת שכר</th>
+            <th colspan="1" rowspan="2">סה"כ שכר בסיס לפני העלאה</th>
+            <th colspan="1" rowspan="2">תוספת עבודה מתוקף מינוי בחוק</th>
+            <th colspan="2">תוספות עבודה מתוקף מינוי בחוק</th>
+            <th colspan="1" rowspan="2">תוספת וותק לשכר</th>
+            <th colspan="2">תוספות וותק לשכר</th>
+            <th colspan="1" rowspan="2">שכר יסוד לפי חלקיות משרה</th>
+            <th colspan="3">שכר יסוד</th>
+        </tr>
+        <tr>
+            <th colspan="1" rowspan="2">קבוצת שייכות</th>
+            <th colspan="1" rowspan="2">זכאי לתוספת עבודה מתוקף מינוי בחוק?</th>
+            <th colspan="1" rowspan="2">שיעות תוספת וותק</th>
+            <th colspan="1" rowspan="2">סה"כ שנות וותק</th>
+            <th colspan="1">רמה ניהולית</th>
+            <th colspan="1" rowspan="2">רמה מקצועית</th>
+            <th colspan="1">חלקיות משרה</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-salary>
+        <tr>
+            <!-- new salary -->
+            <td>{{salary.calculatedNewBasicSalary}}</td>
+            <td>{{salary.salaryIncreaseAmount}}</td>
+            <td>{{salary.rateSalaryIncrease * 100}}%</td>
+            <td>{{salary.calculatedBasicSalary}}</td>
+            <td>{{salary.calculateSecondJobSalary}}</td>
+            <td>{{ salary.entitledToAdditionalWork ? salary.affinityGroup : ""}}</td>
+            <td>{{salary.entitledToAdditionalWorkTxt}}</td>
+            <td>{{salary.calculateSenioritySalary}}</td>
+            <td>{{salary.additionalSeniorityRate * 100}}%</td>
+            <td>{{salary.yearsOfSeniority}}</td>
+            <td>{{salary.calculatedFundamentalSalary}}</td>
+            <td>{{salary.managementLevel}}</td>
+            <td>{{salary.professionalLevel}}</td>
+            <td>{{salary.partTimeJob}}</td>
+        </tr>
+    </ng-template>
+</p-table>

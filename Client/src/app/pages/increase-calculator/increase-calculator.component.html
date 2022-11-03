@@ -1,0 +1,44 @@
+<div class="card" dir="rtl">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <h5 class="flex flex-wrap align-items-center justify-content-center py-5 m-3">מחשבון לחישוב העלאת שכר</h5>
+
+        <div class="flex flex-wrap align-items-center justify-content-center">
+            <div class="py-5 m-3">
+                <p>חלקיות משרה</p>
+                <p-dropdown [options]="partTimeJobList" formControlName="PartTimeJob" optionLabel="name"
+                    optionValue="code" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+            <div class="py-5 m-3">
+                <p>רמה מקצועית</p>
+                <p-dropdown [options]="professionalLevelList" formControlName="ProfessionalLevel" optionLabel="name"
+                    optionValue="code" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+            <div class="py-5 m-3">
+                <p>רמה ניהולית</p>
+                <p-dropdown [options]="managementLevelList" formControlName="ManagementLevel" optionLabel="name"
+                    optionValue="code" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+            <div class="py-5 m-3">
+                <p>סה"כ שנות וותק</p>
+                <p-inputNumber formControlName="YearsOfSeniority" [minFractionDigits]="1" mode="decimal" [min]="0" [max]="100"></p-inputNumber>
+            </div>
+            <div class="py-5 m-3">
+                <p>זכאי לתוספת עבודה בחוק</p>
+                <p-inputSwitch formControlName="EntitledToAdditionalWork"></p-inputSwitch>
+            </div>
+            <div class="py-5 m-3" *ngIf="entitledToAdditional">
+                <p>שייכות לקבוצה</p>
+                <p-dropdown [options]="affinityGroupList" formControlName="AffinityGroup" optionLabel="name"
+                    optionValue="code" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+        </div>
+        <div class=" flex flex-wrap align-items-center justify-content-center">
+            <p-button type="submit" class="py-5 m-3" label="חשב את השכר שלי" icon="pi pi-check" iconPos="left">
+            </p-button>
+        </div>
+    </form>
+</div>
+<div class="py-5 m-3">
+    <app-new-salary-table *ngIf="showTableResult" [salaryResult]="salaryResult" ></app-new-salary-table>
+</div>

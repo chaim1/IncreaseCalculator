@@ -16,5 +16,5 @@ export const MANAGEMENT_LEVEL_LIST: Option[] = [
 ];
 export const AFFINITY_GROUP_LIST: Option[] = [
     { name: "קבוצה א", code: 1 },
-    { name: "קבוצה ב", code: 0.5 },
+    { name: "קבוצה ב", code: 0.5 }
 ];
